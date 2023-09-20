@@ -10,11 +10,7 @@ async function submitTaskTickets(task_UUID) {
       "sdgs-6":obj.ticket.s6,"sdgs-7":obj.ticket.s7,"sdgs-8":obj.ticket.s8,
       "sdgs-9":obj.ticket.s9,"sdgs-10":obj.ticket.s10,"sdgs-11":obj.ticket.s11,
       "sdgs-12":obj.ticket.s12,"sdgs-13":obj.ticket.s13,"sdgs-14":obj.ticket.s14,
-      "sdgs-15":obj.ticket.s15,"sdgs-16":obj.ticket.s16,"sdgs-17":obj.ticket.s17,
-      "sdgs-18":obj.ticket.s18,"sdgs-19":obj.ticket.s19,"sdgs-20":obj.ticket.s20,
-      "sdgs-21":obj.ticket.s21,"sdgs-22":obj.ticket.s22,"sdgs-23":obj.ticket.s23,
-      "sdgs-24":obj.ticket.s24,"sdgs-25":obj.ticket.s25,"sdgs-26":obj.ticket.s26,
-      "sdgs-27":obj.ticket.s27};
+      "sdgs-15":obj.ticket.s15,"sdgs-16":obj.ticket.s16,"sdgs-17":obj.ticket.s17};
 
     var taskWeight = {};
     try {
@@ -51,7 +47,7 @@ function submitTaskComment() {
     dataJSON.uuid = uuid;
     dataJSON.email = getLocalStorage("email");
     dataJSON.comment = document.getElementById("Idcomment").value;
-    
+
     var img = document.getElementById("id_upload_foot_print_img").style.backgroundImage;
     img = img.replace('url("', '');
     img = img.replace('")', '');
@@ -107,7 +103,7 @@ function updateNodeData(baseNodes, baseLinks) {
     // Add nodes
     obj = JSON.parse(getLocalStorage(list_task_UUIDs[index]));
     try {
-      for (var index_sdgs = 1; index_sdgs < 28; index_sdgs++) {
+      for (var index_sdgs = 1; index_sdgs < 18; index_sdgs++) {
         if (obj.ticket["s" + index_sdgs] != "0") {
           // { id: "personal"   , group: 18, label: "personal"   , level: 4 },
 
@@ -152,7 +148,7 @@ function updateNodeData(baseNodes, baseLinks) {
 
   var new_project_node = [];
   try {
-    for (var index = 1; index < 28; index++) {
+    for (var index = 1; index < 18; index++) {
       if (projectWeight["sdgs-" + index] != "0") {
         // Add nodes
         for (var index_nodes_counts = 0; index_nodes_counts < parseInt(projectWeight["sdgs-" + index]); index_nodes_counts++) {
@@ -176,7 +172,7 @@ function updateNodeData(baseNodes, baseLinks) {
   }
 
   // Updating links
-  // { target: "SDG-1", source: "C" , strength: 0.5 }, 
+  // { target: "SDG-1", source: "C" , strength: 0.5 },
   for (var index = 0; index < new_personal_node.length; index++) {
     obj = new_personal_node[index];
 
@@ -219,8 +215,8 @@ function updateTalbeData() {
   }
 
   var list_child_tasks = [];
-  
-  for (var index = 0; index < list_task_UUIDs.length; index ++) { 
+
+  for (var index = 0; index < list_task_UUIDs.length; index ++) {
     list_child_tasks.push(get_child_tasks(list_task_UUIDs[index]));
   }
 
@@ -249,8 +245,8 @@ function updateTalbeData() {
   }
 
   try {
-    for (var index = 1; index <= 27; index ++) {
-      document.getElementById("project_s" + index).innerHTML = projectWeight["sdgs-" + index];  
+    for (var index = 1; index <= 17; index ++) {
+      document.getElementById("project_s" + index).innerHTML = projectWeight["sdgs-" + index];
     }
   } catch(e) {
     console.log(e);
@@ -273,10 +269,10 @@ function updateTalbeData() {
       console.log(e);
       return;
     }
-    
+
     var obj_ticket = obj_target.ticket;
 
-    for(var index = 1; index <= 27; index++) {
+    for(var index = 1; index <= 17; index++) {
       // Check SDGs
       if (obj_ticket["s" + index.toString()] != "1") {
         continue;
