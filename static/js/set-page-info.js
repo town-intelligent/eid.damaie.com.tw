@@ -190,7 +190,7 @@ function setPageInfo() {
         path = "/static/imgs/SDGS/E_WEB_";
       }
 
-      img.src = path + index.toString() + ".png";
+      img.src = path + index.toString() + ".svg";
       img.setAttribute("width", "30px");
       img.setAttribute("height", "30px");
 
